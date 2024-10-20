@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ... (previous head content remains the same) ... -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Ordering🍭</title>
+    <style>
+        :root {
+            --primary-color: rgb(255, 0, 0);
+            --secondary-color: #4ecdc4;
+            --accent-color: #feca57;
+            --text-color: #333;
+            --bg-color: #f7f7f7;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            background-image: url(https://png.pngtree.com/background/20230528/original/pngtree-an-arrangement-of-various-indian-food-picture-image_2778221.jpg);
+        }
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.3rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            gap: 1rem;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: var(--accent-color);
+        }
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        .hero {
+
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .hero h2 {
+            font-size: 3rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .menu-item {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .menu-item:hover {
+            transform: translateY(-5px);
+        }
+        .menu-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .menu-item-content {
+            padding: 1rem;
+        }
+        .menu-item h3 {
+            margin: 0;
+            color: var(--primary-color);
+        }
+        .menu-item p {
+            color: var(--text-color);
+            margin: 0.5rem 0;
+        }
+        button {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45b7aa;
+        }
+        #cart {
+            position: fixed;
+            right: 2rem;
+            top: 5rem;
+            width: 300px;
+            background-color: white;
+            border-radius: 12px;
+            padding: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        #cart h2 {
+            color: var(--primary-color);
+        }
+        #cart-items {
+            list-style-type: none;
+            padding: 0;
+        }
+        #cart-items li {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        .remove-item {
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 0.2rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+</head>
+<body>
+    <!-- ... (previous body content remains the same until the script tag) ... -->
+    <header>
+        <nav>
+            <h1><centre>Food Ordering and Monitoring🍲</centre></h1>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="home" class="hero">
+            <h2>Delicious Food, Delivered Fast</h2>
+        </section>
+        <section id="menu" class="menu">
+            <div class="menu-item">
+                <img src="https://png.pngtree.com/png-clipart/20190802/ourmid/pngtree-classic-burger-fresh-veg-transparent-png-background-png-image_1645405.jpg" alt="Gourmet Burger">
+                <div class="menu-item-content">
+                    <h3>Burgers</h3>
+                    <p>"Flavor-packed burgers with juicy patties and fresh toppings!"</p>
+                    <p>₹300.00</p>
+                    <button onclick="addToCart('Burger', 300.00)">Add to Cart</button>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="https://w7.pngwing.com/pngs/514/80/png-transparent-pizza-pie-pizza-cutter-jinli-european-cuisine-food-extreme-pizza-baking-recipe-cheese-thumbnail.png" alt="Truffle Pizza">
+                <div class="menu-item-content">
+                    <h3>Pizza</h3>
+                    <p>"Cheesy, delicious pizza with fresh toppings and a crispy crust!"</p>
+                    <p>₹180.00</p>
+                    <button onclick="addToCart('Pizza', 180.00)">Add to Cart</button>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCAcB106V19GSJX0iXBbtuI2Merx_IsTpaJQnuO-jsEKwVENKELgmJ1ojK9g&s" alt="Quinoa Salad">
+                <div class="menu-item-content">
+                    <h3>Chicken Fry</h3>
+                    <p>"Crispy, flavorful chicken fry with a perfect golden crunch!"</p>
+                    <p>₹200.00</p>
+                    <button onclick="addToCart('Chicken Fry', 200.00)">Add to Cart</button>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="https://w7.pngwing.com/pngs/687/298/png-transparent-fried-rice-and-meat-on-white-ceramic-plate-fizzy-drinks-hyderabadi-biryani-chicken-65-biryani-food-animals-recipe-thumbnail.png" alt="Lobster Pasta">
+                <div class="menu-item-content">
+                    <h3>Briyani</h3>
+                    <p>"Aromatic biryani, layered with spices and tender meat for a delightful meal!"</p>
+                    <p>₹250.00</p>
+                    <button onclick="addToCart('Briyani', 250.00)">Add to Cart</button>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="https://img.freepik.com/free-psd/french-fries-with-sauce-round-basket-transparent-background_84443-1392.jpg?size=626&ext=jpg&ga=GA1.1.567460144.1728228045&semt=ais_hybrid" alt="Tiramisu">
+                <div class="menu-item-content">
+                    <h3>French Fries</h3>
+                    <p>"Golden, crispy French fries, perfectly seasoned for a delicious crunch!"</p>
+                    <p>₹120.00</p>
+                    <button onclick="addToCart('French Fries', 120.00)">Add to Cart</button>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpiqHdg-WDmbbBYX_6RvuJewe_z95GwTS9Og&s" alt="Quinoa Salad">
+                <div class="menu-item-content">
+                    <h3>Cake</h3>
+                    <p>"Soft, moist cake with rich flavors in every bite!"</p>
+                    <p>₹110.00</p>
+                    <button onclick="addToCart('Cake', 110.00)">Add to Cart</button>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIvN4l0mWm1g_FZXbWoRvQK3VH7asFWg8QlYTLwCSR488-vS923-TMYqC1alLSrav-Jek&usqp=CAU" alt="Quinoa Salad">
+                <div class="menu-item-content">
+                    <h3>Noodles & Pasta</h3>
+                    <p>"Delicious pastas and noodles tossed in rich, flavorful sauces!"</p>
+                    <p>₹120.00</p>
+                    <button onclick="addToCart('Noodles & Pasta', 120.00)">Add to Cart</button>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvBxQ0MJOh_GJeITccHajfAmfQbNg2adyc3Q&s" alt="Quinoa Salad">
+                <div class="menu-item-content">
+                    <h3>Fresh Juice</h3>
+                    <p>"Refreshing fresh juice made from the finest fruits!"</p>
+                    <p>₹100.00</p>
+                    <button onclick="addToCart('Fresh Juice', 100.00)">Add to Cart</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <aside id="cart">
+        <h2>Your Cart</h2>
+        <ul id="cart-items"></ul>
+        <p>Total: ₹<span id="cart-total">0.00</span></p>
+        <button onclick="checkout()">Checkout</button>
+        <form action="/checkout" method="get">
+            <button type="submit">👆</button>
+        </form>
+    </aside>
+    <footer>
+        <p>&copy;food ordering All rights reserved.<br>Contact:9843570302   Email:foodorder123@gmail.com</p>
+    </footer>
+    <script>
+        
+    let cart = [];
+    
+    function addToCart(item, price) {
+        cart.push({ item, price });
+        updateCart();
+    }
+    
+    function removeFromCart(index) {
+        cart.splice(index, 1);
+        updateCart();
+    }
+    
+    function updateCart() {
+        const cartItems = document.getElementById('cart-items');
+        const cartTotal = document.getElementById('cart-total');
+        
+        cartItems.innerHTML = '';
+        let total = 0;
+
+        cart.forEach((item, index) => {
+            const li = document.createElement('li');
+            li.innerHTML = `
+                ${item.item} - ₹${item.price.toFixed(2)}
+                <button class="remove-item" onclick="removeFromCart(${index})">X</button>
+            `;
+            cartItems.appendChild(li);
+            total += item.price;
+        });
+
+        cartTotal.textContent = total.toFixed(2);
+    }
+    
+    function checkout() {
+        if (cart.length === 0) {
+            alert('Your cart is empty!');
+        } else {
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            localStorage.setItem('cartTotal', total.toFixed(2));
+            window.location.href = 'checkout.html';
+        }
+    }
+
+
+        
+    </script>
+    
+</body>
+</html>
+
